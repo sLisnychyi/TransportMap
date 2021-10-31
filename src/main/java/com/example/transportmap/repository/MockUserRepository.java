@@ -18,9 +18,9 @@ public class MockUserRepository implements UserRepository {
     }
 
     @Override
-    public int saveUser(User user) {
+    public User saveUser(User user) {
          users.add(user);
-         return 0;
+         return null;
     }
 
     @Override

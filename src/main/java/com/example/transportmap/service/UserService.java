@@ -21,8 +21,8 @@ public class UserService {
         this.privilegedUsers = new ArrayList<>(cacheSize);
     }
 
-    public void saveUser(User user) {
-        userRepository.saveUser(user);
+    public User saveUser(User user) {
+        return userRepository.saveUser(user);
     }
 
     public List<User> getUsers() {
