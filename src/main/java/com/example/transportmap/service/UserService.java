@@ -29,6 +29,10 @@ public class UserService {
         return userRepository.getUsers();
     }
 
+    public User getUser(int id){
+        return userRepository.getUser(id);
+    }
+
     public List<User> getPrivilegedUsers() {
         return privilegedUsers;
     }

@@ -35,4 +35,9 @@ public class UserController {
         }
         return users;
     }
+
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable("id") int id){
+        return userService.getUser(id);
+    }
 }
