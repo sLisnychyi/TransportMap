@@ -6,6 +6,10 @@ spring:
   h2:
     console:
       enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
 ---
 spring:
   datasource:
