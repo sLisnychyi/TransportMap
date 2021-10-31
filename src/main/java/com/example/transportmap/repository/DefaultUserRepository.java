@@ -2,14 +2,15 @@ package com.example.transportmap.repository;
 
 
 import com.example.transportmap.model.User;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
 
 @Repository
+@Profile("prod")
 public class DefaultUserRepository implements UserRepository{
     private final JdbcTemplate jdbcTemplate;
 
@@ -19,14 +20,14 @@ public class DefaultUserRepository implements UserRepository{
 
     @Override
     public int saveUser(User user) {
-        //todo DB usage
         return jdbcTemplate.update("insert into users (name, age) values (?, ?)", user.getName(), user.getAge());
 
     }
 
     @Override
     public List<User> getUsers() {
-        return null;
+        return jdbcTemplate.query("select * from users",
+                (rs, rowNum) -> new User(rs.getString("name"), rs.getInt("age")));
     }
 
     @Override

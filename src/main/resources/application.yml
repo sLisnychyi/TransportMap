@@ -1,12 +1,23 @@
-spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2
-  datasource:
-    url: jdbc:h2:mem:transport_map
-
 services:
   user:
     cache:
       size: 20
+spring:
+  h2:
+    console:
+      enabled: true
+---
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: pass
+  config:
+    activate:
+      on-profile: prod
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev

@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getUsers(@RequestParam("name") String name){
+    public List<User> getUsers(@RequestParam(value = "name", required = false) String name){
         List<User> users = userService.getUsers();
         if(StringUtils.hasText(name)){
             return users.stream()
